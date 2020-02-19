@@ -16,7 +16,9 @@ grid = [
 # using numpy to print a perfect matrix
 # print(np.matrix(grid))
 
-# function to find the possible value of n for grid[y][x] = 0
+# function to check whether there is existing a number in that position or not
+# perform to check for the big grid (9x9) and smaller grid (3x3)
+# return False if there is a number
 def possible_position(y, x, n):
     global grid
     # return False if there is an element at that grid[y][x] position
