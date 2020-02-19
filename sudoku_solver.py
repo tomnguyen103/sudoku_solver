@@ -17,19 +17,20 @@ grid = [
 print(np.matrix(grid))
 print()
 
-# function to check whether there is existing a number in that position or not
+
+# function to check if the position n is valid  or not
 # perform to check for the big grid (9x9) and smaller grid (3x3)
 # return False if there is a number
-def possible_position(y, x, n):
+def possible_position(x, y, n):
     global grid
     # return False if there is an element at that grid[y][x] position
     # check if number n is exist in the row
     for i in range(0, 9):
-        if grid[y][i] == n:
+        if grid[i][y] == n:
             return False
     # check if number n is exist in the column
     for j in range(0, 9):
-        if grid[j][x] == n:
+        if grid[x][j] == n:
             return False
     # // means only take ground or round down to the whole number after the division
     # divide into smaller square (3x3)
@@ -39,7 +40,7 @@ def possible_position(y, x, n):
     # perform a check for each small square (3x3)
     for i in range(0, 3):
         for j in range(0, 3):
-            if grid[y1 + i][x1 + j] == n:
+            if grid[x1 + i][y1 + j] == n:
                 return False
     return True
 
