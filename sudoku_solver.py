@@ -11,8 +11,6 @@ grid = [
     [8, 0, 2, 0, 0, 0, 0, 0, 0],
     [0, 0, 4, 2, 0, 0, 0, 0, 8]
 ]
-
-
 # using numpy to print a perfect matrix
 print(np.matrix(grid))
 print()
@@ -23,15 +21,18 @@ print()
 # return False if there is a number
 def possible_position(x, y, n):
     global grid
+
     # return False if there is an element at that grid[y][x] position
     # check if number n is exist in the row
     for i in range(0, 9):
         if grid[i][y] == n:
             return False
+
     # check if number n is exist in the column
     for j in range(0, 9):
         if grid[x][j] == n:
             return False
+
     # // means only take ground or round down to the whole number after the division
     # divide into smaller square (3x3)
     x1 = (x // 3) * 3
@@ -55,11 +56,13 @@ def solve_puzzle():
         for j in range(9):
             if grid[i][j] == 0:  # which is empty position
                 for n in range(1, 10):
+                    # backtracking algorithm
                     if possible_position(i, j, n):
                         grid[i][j] = n
                         solve_puzzle()
                         grid[i][j] = 0
                 return
+    print("Solution: ")
     print(np.matrix(grid))
 
 
