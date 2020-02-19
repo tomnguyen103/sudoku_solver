@@ -14,7 +14,8 @@ grid = [
 
 
 # using numpy to print a perfect matrix
-# print(np.matrix(grid))
+print(np.matrix(grid))
+print()
 
 # function to check whether there is existing a number in that position or not
 # perform to check for the big grid (9x9) and smaller grid (3x3)
@@ -48,3 +49,17 @@ def possible_position(y, x, n):
 
 def solve_puzzle():
     global grid
+
+    for i in range(9):
+        for j in range(9):
+            if grid[i][j] == 0:  # which is empty position
+                for n in range(1, 10):
+                    if possible_position(i, j, n):
+                        grid[i][j] = n
+                        solve_puzzle()
+                        grid[i][j] = 0
+                return
+    print(np.matrix(grid))
+
+
+solve_puzzle()
